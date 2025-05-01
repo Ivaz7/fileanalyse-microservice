@@ -12,9 +12,24 @@ app.use('/public', express.static(process.cwd() + '/public'));
 app.get('/', function (req, res) {
   res.sendFile(process.cwd() + '/views/index.html');
 });
+app.get('/', (req, res) => {
+  res.sendFile(process.cwd() + '/public/style.css');
+})
 
 
+app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
+  const {
+    originalname,
+    mimetype,
+    size,
+  } = req.file
 
+  res.json({
+    name: originalname,
+    type: mimetype,
+    size: size
+  })
+})
 
 
 const port = process.env.PORT || 3000;
