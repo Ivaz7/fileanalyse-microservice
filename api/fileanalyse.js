@@ -6,7 +6,7 @@ const app = express();
 
 app.use(cors());
 
-app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
+app.post((req, res) => {
   const { originalname, mimetype, size } = req.file;
   res.json({ name: originalname, type: mimetype, size });
 });
