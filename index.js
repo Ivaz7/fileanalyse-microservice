@@ -7,13 +7,13 @@ const upload = multer()
 var app = express();
 
 app.use(cors());
-app.use('/public', express.static(process.cwd() + '/public'));
+app.use('/public', express.static('/public'));
 
-app.get('/', function (req, res) {
-  res.sendFile(process.cwd() + '/views/index.html');
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
 });
 app.get('/', (req, res) => {
-  res.sendFile(process.cwd() + '/public/style.css');
+  res.sendFile(__dirname + '/public/style.css');
 })
 
 
